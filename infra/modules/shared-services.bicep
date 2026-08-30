@@ -15,6 +15,9 @@ resource automation 'Microsoft.Automation/automationAccounts@2023-11-01' = {
   }
   properties: {
     publicNetworkAccess: true
+    sku: {
+      name: 'Basic'
+    }
   }
   tags: {
     environment: 'prod'
