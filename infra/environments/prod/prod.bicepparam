@@ -1,0 +1,16 @@
+using '../../main.bicep'
+
+param environment = 'prod'
+param location = 'eastus'
+param workloadName = 'iot-platform'
+
+param iotHubName = 'iot-telemetry-prod-eus-01'
+param storageAccountName = 'sttelemetryprodeus01'
+param functionAppName = 'func-telemetry-prod-eus-01'
+param functionStorageName = 'stfuncprodeus01'
+param logAnalyticsName = 'law-shared-eus-01'
+param appInsightsName = 'appi-telemetry-prod-eus-01'
+param keyVaultName = 'kv-telemetry-prod-eus-01'
+param vnetName = 'vnet-iot-prod-eus-01'
+param automationAccountName = 'automation-iot-eus-01'
+param recoveryVaultName = 'backup-iot-prod-eus-01'
