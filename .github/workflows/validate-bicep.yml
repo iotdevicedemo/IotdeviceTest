@@ -1,0 +1,35 @@
+name: Validate Bicep
+
+on:
+  pull_request:
+    paths:
+      - 'infra/**'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Bicep
+        uses: Azure/cli@v2
+        with:
+          inlineScript: |
+            az bicep install
+
+      - name: Lint Bicep
+        uses: Azure/cli@v2
+        with:
+          inlineScript: |
+            az bicep build --file infra/main.bicep
+
+      - name: Validate parameter file syntax
+        uses: Azure/cli@v2
+        with:
+          inlineScript: |
+            az bicep build-params --file infra/parameters/dev.bicepparam
