@@ -14,6 +14,10 @@ resource automation 'Microsoft.Automation/automationAccounts@2023-11-01' = {
     type: 'SystemAssigned'
   }
   properties: {
+    disableLocalAuth: false
+    encryption: {
+      keySource: 'Microsoft.Automation'
+    }
     publicNetworkAccess: true
     sku: {
       name: 'Basic'
