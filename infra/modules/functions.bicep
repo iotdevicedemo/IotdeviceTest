@@ -84,12 +84,8 @@ resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
           value: reference(appInsightsResourceId, '2020-02-02').InstrumentationKey
         }
         {
-          name: 'AzureWebJobsStorage__accountName'
-          value: functionStorage.name
-        }
-        {
-          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'UseDevelopmentStorage=false'
+          name: 'AzureWebJobsStorage'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${functionStorage.name};AccountKey=${listKeys(functionStorage.id, '2023-05-01').keys[0].value};EndpointSuffix=core.windows.net'
         }
       ]
     }
